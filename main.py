@@ -1,24 +1,25 @@
 from ipaddress import IPv4Address
 from jinja2 import Template
 import pandas as pd
-from os import system
 from os.path import exists
+from os import system
 from datetime import datetime
+
 
 def convertir_excel_csv(filename,l):
 
     filename_csv = filename.replace('xlsx','csv')
     csv_existe = exists(filename_csv)
 
-    if csv_existe:
-
-        response = f'{filename_csv} ya existe no es necesario convertir'
-
-    else:
-
+    if not csv_existe:
+    
         file_xl = pd.read_excel (filename)
         file_xl.to_csv (filename_csv, index = None, header=True)
         response = f'Archivo {filename_csv} creado'
+
+    else:
+
+        response = f'{filename_csv} ya existe no es necesario convertir'
 
     l.write(f'{datetime.now()}: {response} \n')
 
@@ -91,11 +92,11 @@ def main():
 
     if not exists('logs'):
             system('mkdir logs')
-    
+
     with open(f'logs/crear_configs_{log_dt}.log','w') as l:
 
         l.write(f'{inicio_dt}: Comenzando tarea! \n')
-
+        
         if not exists('configs'):
             system('mkdir configs')
             l.write(f'{datetime.now()}: Directorio "configs" creado\n')
