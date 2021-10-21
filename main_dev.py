@@ -2,6 +2,7 @@ from ipaddress import IPv4Address
 from jinja2 import Template
 import pandas as pd
 from os.path import exists
+from os import system
 
 
 def convertir_excel_csv(filename):
@@ -88,6 +89,9 @@ def main():
     """
     Funcion para ejecutar todas las demas funciones
     """
+
+    if not exists('configs'):
+            system('mkdir configs')
 
     archivo_csv = convertir_excel_csv('docs/Direccionamiento_Sucursales.xlsx')
 
