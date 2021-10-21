@@ -6,6 +6,11 @@ from os.path import exists
 
 def convertir_excel_csv(filename):
 
+    """
+    Funcion para convertir el archivo con la info de los sitios
+    de formato xlsx (excel) a formato csv
+    """
+    
     filename_csv = filename.replace('xlsx','csv')
     csv_existe = exists(filename_csv)
 
@@ -19,6 +24,10 @@ def convertir_excel_csv(filename):
 
 def subnetting_sitio(subnet_sitio):
 
+    """
+    Funcion para hacer el subnetting de un sitio
+    """
+
     subnet = IPv4Address(subnet_sitio)
     ips_sitio = dict()
 
@@ -29,6 +38,10 @@ def subnetting_sitio(subnet_sitio):
 
 
 def crear_valores_jinja(line,ips_sitio):
+
+    """
+    Funcion para crear un diccionario con los valores especificos de un sitio
+    """
 
     valores = {
     "HOSTNAME":line[0] + line[1] + 'RTR' + line[3],
@@ -45,6 +58,10 @@ def crear_valores_jinja(line,ips_sitio):
 
 
 def crear_jinja_data(plantilla,valores):
+
+    """
+    Funcion para crear una instancia de la configuracion utilizando la plantilla Jinja
+    """
     
     with open(plantilla,'r') as j:
         j2_plantilla = Template(j.read())
@@ -55,6 +72,10 @@ def crear_jinja_data(plantilla,valores):
 
 def crear_archivo_config(valores,jinja_data):
     
+    """
+    Funcion para guardar la instancia de configuracion en un archivo TXT
+    """
+    
     archivo = valores['HOSTNAME'] + '.txt'
     
     with open(f'configs/{archivo}', 'w') as f:
@@ -63,6 +84,10 @@ def crear_archivo_config(valores,jinja_data):
 
 
 def main():
+
+    """
+    Funcion para ejecutar todas las demas funciones
+    """
 
     archivo_csv = convertir_excel_csv('docs/Direccionamiento_Sucursales.xlsx')
 
@@ -85,5 +110,7 @@ def main():
 
     print('Trabajo Finalizado!')
 
+
 if __name__ == '__main__':
+
     main()
