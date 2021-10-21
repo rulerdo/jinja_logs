@@ -3,6 +3,7 @@ from jinja2 import Template
 import pandas as pd
 from os.path import exists
 from os import system
+from sys import exit
 
 
 def convertir_excel_csv(filename):
@@ -93,7 +94,14 @@ def main():
     if not exists('configs'):
             system('mkdir configs')
 
-    archivo_csv = convertir_excel_csv('docs/Direccionamiento_Sucursales.xlsx')
+    try:
+
+        archivo_csv = convertir_excel_csv('docs/Direccionamiento_Sucursales.xlsx')
+
+    except FileNotFoundError:
+
+        print(f'ERROR! No se encontro la base de datos ni en formato xlsx ni en csv')
+        exit(0)
 
     with open(archivo_csv) as d:
         
@@ -110,7 +118,7 @@ def main():
                         crear_archivo_config(valores,jinja_data)
 
                     except:
-                        print(f'ADVERTENCIA! Problemas en linea: {line}')
+                        print(f'ERROR! Problemas en linea: {line}')
 
     print('Trabajo Finalizado!')
 
