@@ -12,7 +12,7 @@ Para hacer esto vamos a utilizar el modulo datetime y en particular las funcione
 
 ## Script Base
 
-El script main.py esta basado en el script que se encuentra en el siguiente repositorio
+El archivo main_dev.py esta basado en el script que se encuentra en el siguiente repositorio
 
     https://github.com/rulerdo/crear_configs_jinja
 
