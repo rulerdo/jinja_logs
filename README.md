@@ -8,7 +8,11 @@ Este repositorio incluye los archivos necesarios para trabajar en el siguiente v
 
 El objetivo es agregar a un script existente la funcionalidad de escribir eventos en un archivo log 
 
-Script base:
+Para hacer esto vamos a utilizar el modulo datetime y en particular las funciones now() y strftime()
+
+## Script Base
+
+El script main.py esta basado en el script que se encuentra en el siguiente repositorio
 
     https://github.com/rulerdo/crear_configs_jinja
 
