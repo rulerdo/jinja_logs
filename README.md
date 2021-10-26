@@ -4,7 +4,7 @@
 
 Este repositorio incluye los archivos necesarios para trabajar en el siguiente video tutorial
 
-    <insertar link youtube>
+    https://www.youtube.com/watch?v=2gkn6IYVDmY
 
 El objetivo es agregar a un script existente la funcionalidad de escribir eventos en un archivo log 
 
